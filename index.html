@@ -37,9 +37,8 @@
         <button class="nav-link" data-section="Guardados">♡ <span>Guardados</span></button>
         <button class="nav-link" data-section="Mi perfil">▣ <span>Mi perfil</span></button>
       </nav>
-     <div class="amigos">
-         <hr>
-           <p>Tus amigos</p>
+          <section class="amigos">
+            <h3>Tus amigos</h3>
             <p><i class="avatar rosa">S</i><span><b>sofi.style</b><small>● en línea</small></span></p>
         <p><i class="avatar verde">L</i><span><b>luna.fits</b><small>● en línea</small></span></p>
         <p><i class="avatar celeste">V</i><span><b>valen.makeup</b><small>hace 2 h</small></span></p>
@@ -48,21 +47,13 @@
         <button class="mas" data-section="Amigos">Ver más →</button>
       </section>
     </aside>
-      </div>
- </div>  
-        <div class="barra-publicacion">
-          <img alt="Perfil" class="avatar">
-          <p  > ¿Qué quieres compartir hoy?</p>
-          <ul>
-              <li>Foto</li>
-             <li>Video</li>
-             <li>Mood</li>
-             <li>Canción<li>
-             <li>Outfit</li>
-             <li>Diario</li>
-             <li>Publicar</li>
-         </ul>
-        </div>
+
+           <main class="feed">
+      <section class="panel composer" id="crear-publicacion">
+        <div class="composer-line"><i class="avatar lilac">V</i><input id="post-text" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
+        <div class="composer-tools"><span>▧ Foto</span><span>◉ Video</span><span>☻ Mood</span><span>♫ Canción</span><span>♧ Outfit</span><span>▤ Diario</span><button id="publish-button" class="primary">Publicar</button></div>
+        <p id="form-message" class="form-message" aria-live="polite"></p>
+      </section>
       <div class="publicacion">
           <img alt="Perfil" class="avatar">
             <h4>luna.fits 💜</h4>
@@ -71,27 +62,38 @@
 
     <main class="feed">
       <section class="panel composer" id="crear-publicacion">
-        <div class="composer-line"><i class="avatar lilac">V</i><input id="post-texto" type="texto" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
+        <div class="composer-line"><i class="avatar lilac">V</i><input id="post-texto" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
         <div class="composer-tools"><span>▧ Foto</span><span>◉ Video</span><span>☻ Mood</span><span>♫ Canción</span><span>♧ Outfit</span><span>▤ Diario</span><button id="publish-button" class="primary">Publicar</button></div>
         <p id="form-message" class="form-message"></p>
       </section>
 
-      <div class="section-title"><div><small>TU CÍRCULO, TUS MOMENTOS</small><h1>El tablero <em>♡</em></h1></div><span class="pill">FTs del día ✦</span></div>
+      <div class="section-title"></div>
+        <h1>El tablero <em>♡</em></h1></div><span class="pill">FTs del día ✦</span></div>
 
-      <article class="panel post">
-        <header class="post-head"><i class="avatar pink">L</i><div><b>luna.fits <em>♡</em></b><small>Hace 2 h</small></div><button class="dots" aria-label="Más opciones">···</button></header>
-        <p class="caption">Un día con mil planes ✨<br>Hoy fue de cafetería, compras y buena compañía ☁️💗</p>
+      <article class="publicación">
+        <header class="post-head">
+           <i class="foto de perfil">L</i> 
+            <div><b>luna.fits <em>♡</em></b>
+              <small>Hace 2 h</small>
+           </div>
+           <button class="puntos">···</button>
+       </header>
+        <p class="decripción">Un día con mil planes ✨<br>Hoy fue de cafetería, compras y buena compañía ☁️💗</p>
         <!-- Collage de fotos del día -->
-        <div class="photo-grid luna-grid">
      <div class="fotos">
-         <img src="img/01_outfit_espejo.jpg" alt="Post">
-         <img src="img/02_matcha.jpg" alt="Post">
-         <img src="img/03_calle_atardecer.jpg" alt="Post">
-         <img src="img/04_bolso_rosa.jpg" alt="Post">
-         <img src="img/05_tenis.jpg" alt="Post">
-         <img src="img/06_flores.jpg" alt="Post">
-         <img src="img/07_sephora.jpg" alt="Post">
-
+         <img src="img/01_outfit_espejo.jpg" alt="Foto frente al espejo">
+         <img src="img/02_matcha.jpg" alt="Bebida">
+         <img src="img/03_calle_atardecer.jpg" alt="atardecer">
+         <img src="img/04_bolso_rosa.jpg" alt="bolso rosa">
+         <img src="img/05_tenis.jpg" alt="zapatos">
+         <img src="img/06_flores.jpg" alt="flores">
+         <img src="img/07_sephora.jpg" alt="tienda de maquillaje">
+        </div>
+        <div class="interacción">
+          <button class="like">♡ <b>246</b></button>
+          <button>☏ <b>18</b></button>
+          <button>⇄</button>
+          <button class="favoritos">♧</button>
         </div>
 </body>
 </html>
