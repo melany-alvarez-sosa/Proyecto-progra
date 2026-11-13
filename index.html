@@ -3,23 +3,24 @@
 <head>
     <title>Little Things</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type= "text/css" href="red.css">
-</head>
-<body>
- <header class= titulo>
-      <a class="brand" hrerf="#" id="inicio">
-         <strong>Little Things<span>♡</span></strong>
-         <br>
-          <b><small>Your closet, your moments</small></b>
-     <label class="search"><span></span><input type="search" placeholder="Buscar en Little Things..."> </label>
-     <br>
-    <div class="top-actions">
-      <button> Inicio ⌂</button>
-      <button> Explorar ◎</button>
-      <button class="add" data-focus-post> Crear publicación +</button>
-      <button>Notificaciones ♧</button>
-      <button class="profile-dot">Mi perfil V</button>
-    </div>
+ </head>
+ <body>
+   <header class= titulo>
+       <a class="marca" hrerf="#" id="inicio">
+          <strong>Little Things<span>♡</span></strong>
+          <br>
+           <b><small>Your closet, your moments</small></b>
+           <label class="buscador"><span></span>
+             <input type="buscador" placeholder="Buscar en Little Things...">
+           </label>
+          <br>
+         <div class="acciones-iniciales">
+           <button> Inicio ⌂</button>
+           <button> Explorar ◎</button>
+           <button class="agregar" data-focus-publicación> Crear publicación +</button>
+           <button>Notificaciones ♧</button>
+           <button class="botón-perfil">Mi perfil V</button>
+         </div>
       </a>
  </header>
     <br>
@@ -36,49 +37,54 @@
         <button class="nav-link" data-section="Notificaciones">♧ <span>Notificaciones</span></button>
         <button class="nav-link" data-section="Guardados">♡ <span>Guardados</span></button>
         <button class="nav-link" data-section="Mi perfil">▣ <span>Mi perfil</span></button>
-      </nav>
+     </nav>
           <section class="amigos">
             <h3>Tus amigos</h3>
             <p><i class="avatar rosa">S</i><span><b>sofi.style</b><small>● en línea</small></span></p>
-        <p><i class="avatar verde">L</i><span><b>luna.fits</b><small>● en línea</small></span></p>
-        <p><i class="avatar celeste">V</i><span><b>valen.makeup</b><small>hace 2 h</small></span></p>
-        <p><i class="avatar azul">C</i><span><b>cami.outfits</b><small>hace 4 h</small></span></p>
-        <p><i class="avatar lila">M</i><span><b>mari.ideas</b><small>hace 5 h</small></span></p>
-        <button class="mas" data-section="Amigos">Ver más →</button>
+           <p><i class="avatar verde">L</i><span><b>luna.fits</b><small>● en línea</small></span></p>
+           <p><i class="avatar celeste">V</i><span><b>valen.makeup</b><small>hace 2 h</small></span></p>
+           <p><i class="avatar azul">C</i><span><b>cami.outfits</b><small>hace 4 h</small></span></p>
+           <p><i class="avatar lila">M</i><span><b>mari.ideas</b><small>hace 5 h</small></span></p>
+           <button class="mas" data-section="Amigos">Ver más →</button>
       </section>
     </aside>
 
            <main class="feed">
-      <section class="panel composer" id="crear-publicacion">
-        <div class="composer-line"><i class="avatar lilac">V</i><input id="post-text" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
-        <div class="composer-tools"><span>▧ Foto</span><span>◉ Video</span><span>☻ Mood</span><span>♫ Canción</span><span>♧ Outfit</span><span>▤ Diario</span><button id="publish-button" class="primary">Publicar</button></div>
-        <p id="form-message" class="form-message" aria-live="polite"></p>
+      <section class="panel publicación" id="crear-publicacion">
+         <div class="línea-publicación"><i class="avatar lila">V</i>
+           <input id="texto-publicación" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
+           <div class="herramientas-publicación">
+             <span>▧ Foto</span>
+             <span>◉ Video</span>
+             <span>♫ Canción</span>
+             <span>♧ Outfit</span>
+             <button id="botón-publicar">Publicar</button>
+            </div>
+              <p id="mensaje" class="mensaje-formulario"></p>
       </section>
-      <div class="publicacion">
+      <div class="publicación">
           <img alt="Perfil" class="avatar">
             <h4>luna.fits 💜</h4>
             <span class="tiempo">Hace 2 h</span>
      </div>
 
-    <main class="feed">
-      <section class="panel composer" id="crear-publicacion">
-        <div class="composer-line"><i class="avatar lilac">V</i><input id="post-texto" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
-        <div class="composer-tools"><span>▧ Foto</span><span>◉ Video</span><span>☻ Mood</span><span>♫ Canción</span><span>♧ Outfit</span><span>▤ Diario</span><button id="publish-button" class="primary">Publicar</button></div>
-        <p id="form-message" class="form-message"></p>
-      </section>
-
-      <div class="section-title"></div>
-        <h1>El tablero <em>♡</em></h1></div><span class="pill">FTs del día ✦</span></div>
+      <div class="título-sección">
+         <div>
+            <small>Your circle, your moments</small>
+           <h1>El tablero <em>♡</em></h1>
+         </div>
+         <span class="fotos-día">FTs del día ✦</span>
+    </div>
 
       <article class="publicación">
-        <header class="post-head">
+        <header class="encabezado-publicación">
            <i class="foto de perfil">L</i> 
             <div><b>luna.fits <em>♡</em></b>
               <small>Hace 2 h</small>
            </div>
            <button class="puntos">···</button>
        </header>
-        <p class="decripción">Un día con mil planes ✨<br>Hoy fue de cafetería, compras y buena compañía ☁️💗</p>
+        <p class="decripción">Un día con mil planes ✨<br>¡cafetería, compras y buena compañía ☁️💗!</p>
         <!-- Collage de fotos del día -->
      <div class="fotos">
          <img src="img/01_outfit_espejo.jpg" alt="Foto frente al espejo">
@@ -95,5 +101,148 @@
           <button>⇄</button>
           <button class="favoritos">♧</button>
         </div>
+         <div class="comentarios">
+          <p><i class="avatar-pequeño">V</i><span><b>valen.makeup</b><br>qué linda la casa de café! ♡</span></p>
+          <p><i class="avatar-pequeño verde">C</i><span><b>cami.outfits</b><br>amo tu outfit, ¿de dónde es el bolso? 💗</span></p>
+          <form>
+            <input placeholder="Escribe un comentario..." >
+            <button>➤</button>
+          </form>
+        </div>
+      </article>
+       <article class="panel-publicación">
+        <header class="encabezado-publicacion">
+          <i class="avatar verde">M</i>
+          <div>
+            <b>mari.ideas <em>♡</em></b>
+            <small>Hace 5 h</small>
+          </div>
+          <button class="puntos">···</button>
+        </header>
+        <p class="decripción">Los días siempre son perfectos si hay café y un buen libro ☆</p>
+        <div class="momentos">
+          <img src="img/lectura.jpg" alt="Café y libro">
+          <img src="img/lirios.jpg" alt="Flores">
+          <img src="img/edificios_atardecer.jpg" alt="Atardecer">
+        </div>
+        <div class="publicación-acciones">
+          <button class="like">♡ <b>392</b></button>
+          <button>☏ <b>27</b></button>
+          <button>⇄</button><button class="favoritos">♧</button>
+        </div>
+      </article>
+       <aside class="parte-derecha">
+      <section class="tablero-derecho">
+        <div class="titulo del tablero">
+          <h2>♧ Outfits de la comunidad</h2>
+          <button class="boton de texto" data-section="Mi armario">Ver todos →</button>
+        </div>
+        <div class="outfits">
+          <article>
+            <img src="" alt="Outfit casual">
+            <b>Para un café</b>
+            <small>Casual · Y2K</small>
+            <label>sofi.style</label>
+          </article>
+          <article>
+            <img src="" alt="Outfit cómodo">
+            <b>Para el cole</b>
+            <small>Comfy · Casual</small>
+            <label>luna.fits</label>
+          </article>
+          <article>
+            <img src="" alt="Outfit coqueto">
+            <b>Para una cita</b>
+            <small>Coquette · Cute</small>
+            <label>valen.makeup</label>
+          </article>
+          <article>
+            <img src="" alt="Outfit de noche">
+            <b>Para la noche</b>
+            <small>Edgy · Chic</small>
+            <label>cami.outfits</label>
+          </article>
+        </div>
+      </section>
+      <section class="tablero-derecho">
+        <div class="titulo del tablero">
+          <h2>♫ Playlist vibes <em>♡</em></h2>
+          <button class="botón de texto" data-section="Playlist vibes">Ver todos →</button>
+        </div>
+         <p class="descripción">Canciones que combinan con tu ft ♫</p>
+        <div class="canciones">
+         <div class="canción">
+          <img src="" alt="">
+          <div><b>soft girl era</b>
+            <small>Para días tranquilos y fotos lindas ♡</small>
+            <small>3:24</small>
+          </div>
+          <button class="play">▶</button>
+        </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div><b>good vibes only</b>
+              <small>Café, sol y buena energía ☀</small>
+              <small>2:56</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>late night thoughts</b>
+              <small>Para tus historias de la noche ☾</small>
+              <small>3:12</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>main character</b>
+              <small>Si te sientes protagonista de tu vida</small>
+              <small>3:08</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>summer days</b>
+              <small>Vibra de verano todo el año 🌴</small>
+              <small>2:45</small>
+            </div><button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>pink skies</b>
+              <small>Canciones para ver el atardecer 💗</small>
+              <small>3:36</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+        </div>
+      </section>
+       <section class="tablero-derecho">
+        <div class="titulo del tablero">
+          <h2>♧ Little Moments ♡</h2>
+          <button class="boton de texto" data-section="Little Moments">Ver todos →</button>
+        </div>
+        <div class="pestañas">
+          <button class="momento-pestaña active" data-moment="Recientes">Recientes</button>
+          <button class="momento-pestaña" data-moment="Amigos">Amigos</button>
+          <button class="momento-pestaña" data-moment="Mi diario">Mi diario</button>
+        </div>
+        <div class="momentos">
+          <img src="" alt="Atardecer">
+          <img src="" alt="Bebida">
+          <img src="" alt="Flores">
+          <img src="" alt="Outfit">
+          <button id="agregar-momento">+</button>
+        </div>
+
+      </section>
+
 </body>
 </html>
