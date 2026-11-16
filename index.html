@@ -6,12 +6,12 @@
  </head>
  <body>
    <header class= titulo>
-       <a class="marca" hrerf="#" id="inicio">
+       <a class="marca" href="#" id="inicio">
           <strong>Little Things<span>♡</span></strong>
           <br>
            <b><small>Your closet, your moments</small></b>
            <label class="buscador"><span></span>
-             <input type="buscador" placeholder="Buscar en Little Things...">
+             <input type="search" placeholder="Buscar en Little Things...">
            </label>
           <br>
          <div class="acciones-iniciales">
@@ -31,10 +31,7 @@
         <button class="nav-link active" data-section="Inicio">⌂ <span>Inicio</span></button>
         <button class="nav-link" data-section="Tablero">▧ <span>Tablero</span></button>
         <button class="nav-link" data-section="Mi armario">♧ <span>Mi armario</span></button>
-        <button class="nav-link" data-section="Beauty corner">✧ <span>Beauty corner</span></button>
         <button class="nav-link" data-section="Playlist vibes">♫ <span>Playlist vibes <small>nuevo</small></span></button>
-        <button class="nav-link" data-section="Mensajes">✉ <span>Mensajes</span></button>
-        <button class="nav-link" data-section="Notificaciones">♧ <span>Notificaciones</span></button>
         <button class="nav-link" data-section="Guardados">♡ <span>Guardados</span></button>
         <button class="nav-link" data-section="Mi perfil">▣ <span>Mi perfil</span></button>
      </nav>
@@ -45,7 +42,7 @@
            <p><i class="avatar celeste">V</i><span><b>valen.makeup</b><small>hace 2 h</small></span></p>
            <p><i class="avatar azul">C</i><span><b>cami.outfits</b><small>hace 4 h</small></span></p>
            <p><i class="avatar lila">M</i><span><b>mari.ideas</b><small>hace 5 h</small></span></p>
-           <button class="mas" data-section="Amigos">Ver más →</button>
+           <button class="más" data-section="Amigos">Ver más →</button>
       </section>
     </aside>
 
@@ -64,8 +61,6 @@
       </section>
       <div class="publicación">
           <img alt="Perfil" class="avatar">
-            <h4>luna.fits 💜</h4>
-            <span class="tiempo">Hace 2 h</span>
      </div>
 
       <div class="título-sección">
@@ -78,11 +73,11 @@
 
       <article class="publicación">
         <header class="encabezado-publicación">
-           <i class="foto de perfil">L</i> 
+           <i class="foto-perfil">L</i> 
             <div><b>luna.fits <em>♡</em></b>
               <small>Hace 2 h</small>
            </div>
-           <button class="puntos">···</button>
+           <button class="más-opciones">···</button>
        </header>
         <p class="decripción">Un día con mil planes ✨<br>¡cafetería, compras y buena compañía ☁️💗!</p>
         <!-- Collage de fotos del día -->
@@ -117,13 +112,13 @@
             <b>mari.ideas <em>♡</em></b>
             <small>Hace 5 h</small>
           </div>
-          <button class="puntos">···</button>
+          <button class="más-opciones">···</button>
         </header>
         <p class="decripción">Los días siempre son perfectos si hay café y un buen libro ☆</p>
         <div class="momentos">
-          <img src="img/lectura.jpg" alt="Café y libro">
-          <img src="img/lirios.jpg" alt="Flores">
-          <img src="img/edificios_atardecer.jpg" alt="Atardecer">
+          <img src="img/lectura.jpg" width="300px" height="300px" alt="Café y libro">
+          <img src="img/lirios.jpg" width="300px" height="300px" alt="Flores">
+          <img src="img/edificios_atardecer.jpg" width="300px" height="300px" alt="Atardecer">
         </div>
         <div class="publicación-acciones">
           <button class="like">♡ <b>392</b></button>
@@ -133,9 +128,9 @@
       </article>
        <aside class="parte-derecha">
       <section class="tablero-derecho">
-        <div class="titulo del tablero">
+        <div class="título-tablero">
           <h2>♧ Outfits de la comunidad</h2>
-          <button class="boton de texto" data-section="Mi armario">Ver todos →</button>
+          <button class="botón de texto" data-section="Mi armario">Ver todos →</button>
         </div>
         <div class="outfits">
           <article>
@@ -165,11 +160,11 @@
         </div>
       </section>
       <section class="tablero-derecho">
-        <div class="titulo del tablero">
+        <div class="título-tablero">
           <h2>♫ Playlist vibes <em>♡</em></h2>
           <button class="botón de texto" data-section="Playlist vibes">Ver todos →</button>
         </div>
-         <p class="descripción">Canciones que combinan con tu ft ♫</p>
+         <p class="descripción">Canciones que combinan con tu foto ♫</p>
         <div class="canciones">
          <div class="canción">
           <img src="" alt="">
@@ -225,9 +220,9 @@
         </div>
       </section>
        <section class="tablero-derecho">
-        <div class="titulo del tablero">
+        <div class="título-tablero">
           <h2>♧ Little Moments ♡</h2>
-          <button class="boton de texto" data-section="Little Moments">Ver todos →</button>
+          <button class="botón de texto" data-section="Little Moments">Ver todos →</button>
         </div>
         <div class="pestañas">
           <button class="momento-pestaña active" data-moment="Recientes">Recientes</button>
@@ -241,8 +236,177 @@
           <img src="" alt="Outfit">
           <button id="agregar-momento">+</button>
         </div>
-
       </section>
-
+      <section id="Tablero">
+        <h3>¡Tableros Recientes!</h3>
+         <article class="publicación">
+        <header class="encabezado-publicación">
+           <i class="foto-perfil">L</i> 
+            <div><b>luna.fits <em>♡</em></b>
+              <small>Hace 2 h</small>
+           </div>
+           <button class="más-opciones">···</button>
+       </header>
+        <p class="decripción">Un día con mil planes ✨<br>¡cafetería, compras y buena compañía ☁️💗!</p>
+        <!-- Collage de fotos del día -->
+     <div class="fotos">
+         <img src="img/01_outfit_espejo.jpg" alt="Foto frente al espejo">
+         <img src="img/02_matcha.jpg" alt="Bebida">
+         <img src="img/03_calle_atardecer.jpg" alt="atardecer">
+         <img src="img/04_bolso_rosa.jpg" alt="bolso rosa">
+         <img src="img/05_tenis.jpg" alt="zapatos">
+         <img src="img/06_flores.jpg" alt="flores">
+         <img src="img/07_sephora.jpg" alt="tienda de maquillaje">
+        </div>
+        <div class="interacción">
+          <button class="like">♡ <b>246</b></button>
+          <button>☏ <b>18</b></button>
+          <button>⇄</button>
+          <button class="favoritos">♧</button>
+        </div>
+         <div class="comentarios">
+          <p><i class="avatar-pequeño">V</i><span><b>valen.makeup</b><br>qué linda la casa de café! ♡</span></p>
+          <p><i class="avatar-pequeño verde">C</i><span><b>cami.outfits</b><br>amo tu outfit, ¿de dónde es el bolso? 💗</span></p>
+          <form>
+            <input placeholder="Escribe un comentario..." >
+            <button>➤</button>
+          </form>
+        </div>
+      </article>
+       <article class="panel-publicación">
+        <header class="encabezado-publicacion">
+          <i class="avatar verde">M</i>
+          <div>
+            <b>mari.ideas <em>♡</em></b>
+            <small>Hace 5 h</small>
+          </div>
+          <button class="más-opciones">···</button>
+        </header>
+        <p class="decripción">Los días siempre son perfectos si hay café y un buen libro ☆</p>
+        <div class="momentos">
+          <img src="img/lectura.jpg" width="300px" height="300px" alt="Café y libro">
+          <img src="img/lirios.jpg" width="300px" height="300px" alt="Flores">
+          <img src="img/edificios_atardecer.jpg" width="300px" height="300px" alt="Atardecer">
+        </div>
+        <div class="publicación-acciones">
+          <button class="like">♡ <b>392</b></button>
+          <button>☏ <b>27</b></button>
+          <button>⇄</button><button class="favoritos">♧</button>
+        </div>
+      </article>
+      </section>
+      <section id="Mi armario">
+        <h4>Algunas de tus prendas!</h4>
+        <img src="img/camisa cuadros.jpg" width="300px" height="300px" alt="Camisa de cuadros">
+        <img src="img/sueter tejido.jpg" width="300px" height="300px" alt="Sueter tejido">
+        <img src="img/fada rosa.jpg" width="300px" height="300px" alt="Falda rosa">
+        <img src="img/pantalon rojo.jpg" width="300px" height="300px" alt="Pantalón rojo">
+        <img src="img/camisa celeste.jpg" width="300px" height="300px" alt="Camisa celeste">
+        <img src="img/poncho.jpg" width="300px" height="300px" alt="poncho">
+      </section>
+      <section id="Playlist vibes">
+        <h3>¡Canciones que te han recomendado!</h3>
+        <div class="título-tablero">
+          <h4>♫ Playlist vibes <em>♡</em></h4>
+          <button class="botón de texto" data-section="Playlist vibes">Ver todos →</button>
+        </div>
+        <div class="canciones">
+         <div class="canción">
+          <img src="" alt="">
+          <div><b>soft girl era</b>
+            <small>Para días tranquilos y fotos lindas ♡</small>
+            <small>3:24</small>
+          </div>
+          <button class="play">▶</button>
+        </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div><b>good vibes only</b>
+              <small>Café, sol y buena energía ☀</small>
+              <small>2:56</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>late night thoughts</b>
+              <small>Para tus historias de la noche ☾</small>
+              <small>3:12</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>main character</b>
+              <small>Si te sientes protagonista de tu vida</small>
+              <small>3:08</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>summer days</b>
+              <small>Vibra de verano todo el año 🌴</small>
+              <small>2:45</small>
+            </div><button class="play">▶</button>
+          </div>
+          <div class="canción">
+            <img src="" alt="">
+            <div>
+              <b>pink skies</b>
+              <small>Canciones para ver el atardecer 💗</small>
+              <small>3:36</small>
+            </div>
+            <button class="play">▶</button>
+          </div>
+        </div>
+     </section>
+     <section id="Mi perfil">
+    <div class="encabezado-perfil">
+        <div class="foto-perfil">
+            <img src="img/mi-foto.jpg" alt="Foto de perfil">
+        </div>
+        <div class="informacion-perfil">
+            <h2>Valentina Alvarez</h2>
+            <p class="usuario">@vale.style</p>
+            <p class="descripcion-perfil"> Fashion lover ♡ 
+                Compartiendo mis outfits y pequeños momentos.</p>
+            <div class="estadisticas-perfil">
+                <p><strong>24</strong> publicaciones</p>
+                <p><strong>640</strong> seguidores</p>
+                <p><strong>120</strong> seguidos</p>
+            </div>
+            <button class="boton-editar">Editar perfil</button>
+        </div>
+    </div>
+    <section class="mi-estilo">
+        <h3>Mi estilo ♡</h3>
+        <p> Me encanta combinar prendas cómodas, colores pastel y accesorios.</p>
+        <div class="estilos-favoritos">
+            <span>Casual</span>
+            <span>Coquette</span>
+            <span>Streetwear</span>
+        </div>
+    </section>
+    <section class="mis-publicaciones">
+        <h3>Mis publicaciones</h3>
+        <div class="cuadricula-publicaciones">
+            <img src="img/outfit 1.jpg" width="300px" height="500px" alt="Mi outfit del día">
+            <img src="img/foto2.jpg" width="300px" height="500px" alt="Un momento especial">
+            <img src="img/outfit 4.jpg" width="300px" height="500px" alt="Mi look favorito">
+        </div>
+    </section>
+    <section class="mis-outfits">
+        <h3>Mis outfits ♡</h3>
+        <div class="cuadricula-outfits">
+            <img src="img/outfit 3.jpg" width="300px" height="500px" alt="Primer outfit">
+            <img src="img/outfit 2.jpg" width="300px" height="500px" alt="Segundo outfit">
+            <img src="img/outfit 5.jpg" width="300px" height="500px" alt="Tercer outfit">
+        </div>
+    </section>
+     </section> 
 </body>
 </html>
