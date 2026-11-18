@@ -1,16 +1,16 @@
-const derecha = document.querySelector('.parte-derecha');  // columna de la derecha (outfits, playlist, momentos)const feed = document.querySelector('main.feed');              // parte de "Inicio"
+const feed = document.querySelector('main.feed');              // parte de "Inicio"
+const derecha = document.querySelector('.parte-derecha');      // columna de la derecha (outfits, playlist, momentos)
 const botonesNav = document.querySelectorAll('.nav-link');     // botones del menú de la izquierda
-const inputBuscar = document.querySelector('.buscador input'); //  barra de búsqueda
+const inputBuscar = document.querySelector('.buscador input'); // barra de búsqueda
 const inputPublicar = document.getElementById('texto-publicación');
-const botonPublicar = document.getElementById('botón-publicar');
-const mensaje = document.getElementById('mensaje');         
-const miUsuario = '16.va_l';                                  // mi usuario (el del perfil)
-
+const mensaje = document.getElementById('mensaje');            // el <p> donde salen los avisitos
+const miUsuario = '16.va_l';                                   // mi usuario (el del perfil)
 let adjunto = null;     // se guarda la foto/video/canción que se va a publicar
 let expandido = { outfits: false, canciones: false };  // para saber si ya tocaron "Ver todos"
 let buscando = false;   // para saber si hay algo escrito en el buscador
 let guardados = [];     // publicaciones guardadas (para la sección Guardados)
-let menuAbierto = null;
+let menuAbierto = null; // el menú de "más opciones" que está abierto
+// Un avisito que sale abajo y se quita solo
 function mostrarAviso(texto) {
   const aviso = document.createElement('div');
   aviso.textContent = texto;
@@ -18,27 +18,27 @@ function mostrarAviso(texto) {
   document.body.appendChild(aviso);
   setTimeout(function () { aviso.remove(); }, 2500); // a los 2.5 segundos desaparece
 }
-// Escribe un mensaje en el id="mensaje" del cuadro de publicar
+// Escribe un mensaje en el <p id="mensaje"> del cuadro de publicar
 function mostrarMensaje(texto) {
   mensaje.textContent = texto;
   setTimeout(function () { mensaje.textContent = ''; }, 3000);
 }
-// Las páginas son las <section class="página"> que están FUERA del <main>
-// (así no me confundo con una section que está dentro del main)
+// Las páginas son las <section class="página"> que NO están dentro del <main> ni de la columna derecha
 function getPaginas() {
   const todas = Array.from(document.querySelectorAll('section.página'));
-  return todas.filter(function (p) { return !p.closest('main'); });
+  return todas.filter(function (p) { return !p.closest('main, .parte-derecha'); });
 }
 // Busca una página por su id (Tablero, Mi armario, etc.)
 function buscarPagina(nombre) {
   return getPaginas().find(function (p) { return p.id === nombre; });
 }
-// Oculta o muestra un elemento según sus data-limite, data-busqueda, data-ocultado
+// Oculta o muestra un elemento según data-busqueda y data-ocultado
 // Si alguna dice 'si' se oculta
 function refrescar(el) {
-  const oculto = el.dataset.limite === 'si' || el.dataset.busqueda === 'si' || el.dataset.ocultado === 'si';
+  const oculto = el.dataset.busqueda === 'si' || el.dataset.ocultado === 'si';
   el.style.display = oculto ? 'none' : '';
 }
+// Cambiar de sección
 function mostrarSeccion(nombre) {
   cerrarMenu();
   let pagina = null;
@@ -55,8 +55,10 @@ function mostrarSeccion(nombre) {
   getPaginas().forEach(function (p) { p.style.display = 'none'; });
   if (nombre === 'Inicio') {
     feed.style.display = '';        // se muestra el inicio
+    derecha.style.display = '';     // y la columna de outfits/playlist
   } else {
     feed.style.display = 'none';    // se esconde el inicio
+    derecha.style.display = 'none'; // y la columna de la derecha (los outfits solo van en Inicio)
     pagina.style.display = 'block'; // y se muestra la página que tocaron
   }
   // le pongo la clase "active" solo al botón del menú que tocaron
@@ -65,9 +67,9 @@ function mostrarSeccion(nombre) {
   });
   window.scrollTo(0, 0); // subir hasta arriba
 }
-// Perfil de un amigo. Se reconocen por la foto de perfil 
+// Perfil de un amigo. Se reconocen por la foto de perfil
 function mostrarPerfilAmigo(src) {
-  if (src === 'img/perfil.jpg') {  
+  if (src === 'img/perfil.jpg') {   // si es mi foto, voy a mi perfil
     mostrarSeccion('Mi perfil');
     return;
   }
@@ -76,39 +78,38 @@ function mostrarPerfilAmigo(src) {
     return img && img.getAttribute('src') === src;
   });
   if (!pagina) {
-    mostrarAviso('Perfil no disponible :(');
+    mostrarAviso('No encontré ese perfil :(');
     return;
   }
   cerrarMenu();
   getPaginas().forEach(function (p) { p.style.display = 'none'; });
   feed.style.display = 'none';
+  derecha.style.display = 'none';
   pagina.style.display = 'block';
   botonesNav.forEach(function (b) { b.classList.remove('active'); });
   window.scrollTo(0, 0);
 }
-// Esta función deja visibles solo 3 outfits y 3 canciones,
-// a menos que ya hayan tocado "Ver todos" o estén buscando algo
-function aplicarLimites() {
-  // Ahora el css es el que esconde del 4to en adelante 
-  // Aquí solo se ponen o se quitan unas clases al feed y el css hace el resto
-  feed.classList.toggle('ver-todos-outfits', expandido.outfits);
-  feed.classList.toggle('ver-todos-canciones', expandido.canciones);
-  feed.classList.toggle('buscando', buscando);
-}
-// Se pone una clase a los outfits y canciones que pasan del tercero (del 4to en adelante)
-// El css usa esa clase para esconderlos
+// Ver todos
+// Les pongo la clase "extra-outfit" / "extra-cancion" a los que pasan del tercero.
+// El css esconde esas clases (mira el final del css)
 function marcarExtras() {
-  document.querySelectorAll('main .outfits article').forEach(function (o, i) {
+  document.querySelectorAll('.parte-derecha .outfits article').forEach(function (o, i) {
     o.classList.toggle('extra-outfit', i >= 3);   // i empieza en 0, o sea 0,1,2 son los primeros tres
   });
-  document.querySelectorAll('main .canción').forEach(function (c, i) {
+  document.querySelectorAll('.parte-derecha .canción').forEach(function (c, i) {
     c.classList.toggle('extra-cancion', i >= 3);
   });
 }
+// Le pone o le quita clases a la columna derecha y el css hace el resto
+function aplicarLimites() {
+  derecha.classList.toggle('ver-todos-outfits', expandido.outfits);
+  derecha.classList.toggle('ver-todos-canciones', expandido.canciones);
+  derecha.classList.toggle('buscando', buscando);
+}
 // Qué pasa cuando tocan el botón "Ver todos" de un panel
 function tocarVerTodos(boton) {
-  const cual = boton.dataset.section; 
-if (cual === 'Mi armario') {                 // el de outfits
+  const cual = boton.dataset.section;
+  if (cual === 'Mi armario') {                 // el de outfits
     expandido.outfits = !expandido.outfits;    // cambia de true a false y viceversa
     boton.textContent = expandido.outfits ? 'Ver menos ←' : 'Ver todos →';
   } else if (cual === 'Playlist vibes') {      // el de canciones
@@ -119,6 +120,7 @@ if (cual === 'Mi armario') {                 // el de outfits
   }
   aplicarLimites();
 }
+// Buscador
 // Saca texto "escondido" (los alt de las fotos y los nombres de las canciones)
 // para que también se pueda buscar por eso
 function textoExtra(el) {
@@ -145,9 +147,8 @@ inputBuscar.addEventListener('input', function () {
     refrescar(el);
   });
 });
-//  Publicar (texto, foto, video, canción, outfit) 
-// Cámara (foto y video) 
-// modo puede ser 'foto' o 'video'
+// Publicar (texto, foto, video, canción, outfit) 
+// Cámara (foto y video). modo puede ser 'foto' o 'video' 
 async function abrirCamara(modo) {
   // primero la alerta de permiso, como pidieron
   const dioPermiso = confirm('¿Permitir que Little Things acceda a su cámara?');
@@ -165,11 +166,11 @@ async function abrirCamara(modo) {
     // si es video también pedimos el micrófono
     stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: modo === 'video' });
   } catch (error) {
-    mostrarMensaje('No se pudo abrir la cámara... revisa los permisos del navegador');
+    mostrarMensaje('No pude abrir la cámara... revisa los permisos del navegador');
     console.log(error); // para ver qué pasó en la consola
     return;
   }
-  // Se crea la ventanita con js (sin css aparte, todo aquí mismo)
+  // Se crea la ventanita con js (todo aquí mismo)
   const fondo = document.createElement('div');
   fondo.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9998;';
   const caja = document.createElement('div');
@@ -234,7 +235,7 @@ async function abrirCamara(modo) {
     }
   };
 }
-//  Elegir archivos (canción, outfit, momento) 
+// Elegir archivos (canción, outfit, momento) 
 // Se crea un input de archivos escondido y se "toca" con js
 const selectorArchivo = document.createElement('input');
 selectorArchivo.type = 'file';
@@ -287,13 +288,13 @@ function crearMedia(adj, ancho) {
 }
 function mostrarVistaPrevia() {
   let caja = document.getElementById('vista-previa');
-  if (!caja) {             // si no existe todavía, se crea
+  if (!caja) {            // si no existe todavía, se crea
     caja = document.createElement('div');
     caja.id = 'vista-previa';
     caja.style.margin = '10px 0';
     mensaje.before(caja);
   }
-  caja.innerHTML = '';       // se limpia lo que había
+  caja.innerHTML = '';      // se limpia lo que había
   if (!adjunto) return;
   caja.appendChild(crearMedia(adjunto, '200px'));
   const quitar = document.createElement('button');
@@ -304,7 +305,7 @@ function mostrarVistaPrevia() {
   };
   caja.appendChild(quitar);
 }
-//  Crear la publicación nueva
+// Crear la publicación nueva 
 function publicar() {
   const texto = inputPublicar.value.trim();
   // no se puede publicar vacío
@@ -332,15 +333,14 @@ function publicar() {
     '<div class="comentarios">' +
       '<form><input placeholder="Escribe un comentario..."><button>➤</button></form>' +
     '</div>';
-
   post.querySelector('.decripción').textContent = texto;
+
   const zonaFotos = post.querySelector('.fotos');
   if (adjunto) {
     zonaFotos.appendChild(crearMedia(adjunto, '300px'));
   } else {
     zonaFotos.remove(); // si no hay foto, se quita el espacio vacío
   }
-
   // Se pone arriba de todo en el feed (antes de la primera publicación que ya existe)
   const primera = feed.querySelector('article.publicación, article.panel-publicación');
   if (primera) {
@@ -348,7 +348,6 @@ function publicar() {
   } else {
     feed.appendChild(post);
   }
-
   // Y una copia en la sección Tablero
   const tablero = buscarPagina('Tablero');
   if (tablero) {
@@ -357,7 +356,6 @@ function publicar() {
     if (primeraTablero) primeraTablero.before(copia);
     else tablero.appendChild(copia);
   }
-
   // Si era un outfit también va a Mi armario
   if (adjunto && adjunto.tipo === 'outfit') {
     const armario = buscarPagina('Mi armario');
@@ -370,7 +368,6 @@ function publicar() {
       armario.appendChild(img);
     }
   }
-
   // Si era una canción también va a la Playlist
   if (adjunto && adjunto.tipo === 'audio') {
     const playlist = buscarPagina('Playlist vibes');
@@ -386,17 +383,17 @@ function publicar() {
       else playlist.appendChild(cancion);
     }
   }
-
   // Se limpia todo para la próxima publicación
   inputPublicar.value = '';
   adjunto = null;
   mostrarVistaPrevia();
   mostrarMensaje('¡Publicado! ♡');
-}                                             
+}
 // También se puede publicar con Enter
 inputPublicar.addEventListener('keydown', function (e) {
   if (e.key === 'Enter') publicar();
 });
+// Guardar y comentar
 // Guarda o quita una publicación de "Guardados"
 function alternarGuardado(post) {
   const autor = post.querySelector('header b').textContent.replace('♡', '').trim();
@@ -441,7 +438,7 @@ document.addEventListener('submit', function (e) {
   p.querySelector('span').append(texto);
   form.before(p);
   input.value = '';
-  // Se le suma 1 al contador de comentarios (el botón ☏)
+ // Se le suma 1 al contador de comentarios (el botón ☏)
   const post = form.closest('article');
   const acciones = post.querySelector('.interacción, .publicación-acciones');
   if (acciones) {
@@ -450,6 +447,7 @@ document.addEventListener('submit', function (e) {
     if (contador) contador.textContent = parseInt(contador.textContent) + 1;
   }
 });
+// Menú de "Más opciones" 
 function cerrarMenu() {
   if (menuAbierto) {
     menuAbierto.remove();
@@ -457,7 +455,7 @@ function cerrarMenu() {
   }
 }
 function abrirMenu(boton) {
-  // si ya estaba abierto el de este botón, Se cierra 
+  // si ya estaba abierto el de este botón, se cierra
   if (menuAbierto && menuAbierto._boton === boton) {
     cerrarMenu();
     return;
@@ -478,7 +476,7 @@ function abrirMenu(boton) {
     { texto: '⚑ Reportar', accion: function () { mostrarAviso('Gracias por reportar, lo vamos a revisar'); } },
     { texto: '✕ Ocultar publicación', accion: function () { post.dataset.ocultado = 'si'; refrescar(post); } }
   ];
-  // si la publicación es mía, también puedo eliminarla
+  // si la publicación es mía, también se puede eliminar
   if (autor === miUsuario) {
     opciones.push({ texto: '🗑 Eliminar', accion: function () {
         if (confirm('¿Seguro que quieres eliminar esta publicación?')) post.remove();
@@ -518,7 +516,7 @@ function prepararGuardados() {
     if (paginas.length > 0) paginas[paginas.length - 1].after(seccion);
     else document.body.appendChild(seccion);
   }
-  // cada vez que entran, Se vuelve a armar con lo que hay guardado
+  // cada vez que entran, se vuelve a armar con lo que hay guardado
   seccion.innerHTML = '<h3>Tus publicaciones guardadas ♡</h3>';
   if (guardados.length === 0) {
     const vacio = document.createElement('p');
@@ -535,19 +533,18 @@ function prepararGuardados() {
   });
   return seccion;
 }
-// Escucho los clicks en todo el document y reviso qué tocaron.
+// Se escuchan los clicks en todo el document y se revisa qué tocaron.
 // Se hace así para que también funcione con las publicaciones nuevas que se crean después.
 document.addEventListener('click', function (e) {
   const t = e.target; // lo que tocaron
-  // logo (Little Things): vuelve al inicio 
+  // logo (Little Things): vuelve al inicio
   const marca = t.closest('a.marca');
   if (marca) {
-    e.preventDefault();                 // para que el link no mueva la página
-    if (t.closest('.buscador')) return; // pero si tocaron el buscador no se hace nada más
+    e.preventDefault();   // para que el link no mueva la página
     mostrarSeccion('Inicio');
     return;
   }
-  // botones de arriba (Inicio, Explorar, Crear publicación, Notificaciones, Mi perfil)
+  // botones de arriba (Inicio, Explorar, Crear publicación, Notificaciones, Mi perfil) 
   const botonArriba = t.closest('.acciones-iniciales button');
   if (botonArriba) {
     const texto = botonArriba.textContent;
@@ -580,7 +577,7 @@ document.addEventListener('click', function (e) {
     return;
   }
   // "Ver todos" de outfits / playlist / momentos 
-  const verTodos = t.closest('main .tablero-derecho button[data-section]');
+  const verTodos = t.closest('.parte-derecha button[data-section]');
   if (verTodos) {
     tocarVerTodos(verTodos);
     return;
@@ -590,7 +587,7 @@ document.addEventListener('click', function (e) {
     publicar();
     return;
   }
-  // Foto / Video / Canción / Outfit
+  // Foto / Video / Canción / Outfit 
   const herramienta = t.closest('.herramientas-publicación span');
   if (herramienta) {
     const texto = herramienta.textContent;
@@ -613,8 +610,7 @@ document.addEventListener('click', function (e) {
   }
   // si tocaron fuera del menú, se cierra
   if (!t.closest('.menu-opciones-lt')) cerrarMenu();
-
-  //  like 
+  // like 
   const like = t.closest('.like');
   if (like) {
     const numero = like.querySelector('b');
@@ -623,7 +619,7 @@ document.addEventListener('click', function (e) {
       n--;
       like.dataset.activo = 'no';
       like.firstChild.textContent = '♡ ';
-    } else {                              // no tenía like -> se le pone
+    } else {                 // no tenía like -> se le pone
       n++;
       like.dataset.activo = 'si';
       like.firstChild.textContent = '♥ ';
@@ -631,7 +627,7 @@ document.addEventListener('click', function (e) {
     numero.textContent = n;
     return;
   }
-  // guardar (el ♧)
+  // guardar (el ♧) 
   const fav = t.closest('.favoritos');
   if (fav) {
     alternarGuardado(fav.closest('article'));
@@ -649,28 +645,30 @@ document.addEventListener('click', function (e) {
     }
     return;
   }
-  // tocar la foto o el nombre de alguien en una publicación abre su perfil
+  // tocar la foto o el nombre de alguien en una publicación abre su perfil 
   const cabecera = t.closest('article header');
   if (cabecera) {
     const img = cabecera.querySelector('img');
     if (img) mostrarPerfilAmigo(img.getAttribute('src'));
   }
 });
-// Esto hace que solo una canción suene a la vez
+// el evento 'play' no "sube" como los clicks, por eso el true del final
 document.addEventListener('play', function (e) {
   if (e.target.tagName !== 'AUDIO') return;
   document.querySelectorAll('audio').forEach(function (a) {
     if (a !== e.target) a.pause();
   });
 }, true);
+// el cursor al pasar por cosas que se pueden tocar
 document.querySelectorAll('.herramientas-publicación span, .amigos p, article header img').forEach(function (el) {
   el.style.cursor = 'pointer';
 });
-// por si alguna section.página quedó metida dentro del main, que se vea
-document.querySelectorAll('main .página').forEach(function (p) { p.style.display = 'block'; });
-marcarExtras();          // se marca cuáles son del 4to en adelante
-aplicarLimites();        // solo 3 outfits y 3 canciones al inicio
+document.querySelectorAll('.parte-derecha .página').forEach(function (p) { p.style.display = 'block'; });
+
+marcarExtras();           // se marca cuáles son del 4to en adelante
+aplicarLimites();         // solo 3 outfits y 3 canciones al inicio
 mostrarSeccion('Inicio'); // empezamos en Inicio
+
 
 
 

@@ -1,3 +1,4 @@
+/* Se guardan los colores en variables para usarlos con var(--nombre) */
 :root {
     --purple: #A78BD4;
     --dark: #655184;
@@ -10,9 +11,11 @@
     --muted: #9991A5;
     --border: #E7E0F0;
 }
+/* border-box hace que el padding y el borde no agranden las cajas */
 * {
     box-sizing: border-box;
 }
+/* fondo y letra de toda la página */
 body {
     margin: 0;
     padding: 0;
@@ -20,13 +23,16 @@ body {
     color: var(--text);
     font-family: Arial, sans-serif;
 }
+/* que ninguna imagen se pase del ancho de su caja */
 img {
     max-width: 100%;
 }
+/* El cursor al pasar por los botones y que usen la misma letra de la página */
 button {
     cursor: pointer;
     font-family: inherit;
 }
+/* encabezado de arriba. Flex para poner todo en fila */
 .titulo {
     display: flex;
     align-items: center;
@@ -37,6 +43,7 @@ button {
     background: var(--white);
     border-bottom: 1px solid var(--border);
 }
+/* el logo, uno encima del otro (column) y sin la raya del link */
 .marca {
     display: flex;
     flex-direction: column;
@@ -56,6 +63,7 @@ button {
     color: var(--muted);
     letter-spacing: 1px;
 }
+/* barra de búsqueda con forma de pastilla */
 .buscador {
     display: flex;
     align-items: center;
@@ -78,6 +86,7 @@ button {
     color: var(--text);
     font-size: 12px;
 }
+/* botones de arriba en fila */
 .acciones-iniciales {
     display: flex;
     align-items: center;
@@ -95,6 +104,7 @@ button {
 .acciones-iniciales button:hover {
     background: var(--lavender);
 }
+/* el botón de crear publicación va morado */
 .acciones-iniciales .agregar {
     background: var(--purple);
     color: white;
@@ -106,6 +116,7 @@ button {
     background: var(--mint);
     color: var(--dark);
 }
+/* grid de 3 columnas: menú (205px) y derecha (340px) */
 .opciones {
     display: grid;
     grid-template-columns: 205px minmax(0, 1fr) 340px;
@@ -115,16 +126,19 @@ button {
     padding: 18px;
     align-items: start;
 }
+/* sticky: el menú se queda pegado arriba cuando bajo la página */
 .sidebar {
     position: sticky;
     top: 18px;
     min-width: 0;
 }
+/* son dos clases pegadas (Menú y principal), por eso el punto en medio */
 .Menú.principal {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
+/* cada botón del menú de la izquierda */
 .nav-link {
     display: flex;
     align-items: center;
@@ -149,10 +163,12 @@ button {
     color: var(--dark);
     font-size: 9px;
 }
+/* el botón del menú se pinta cuando le pasan el mouse o es el seleccionado */
 .nav-link:hover, .nav-link.active {
     background: var(--lavender);
     color: var(--dark);
 }
+/* lista de amigos con una rayita arriba */
 .amigos {
     margin-top: 20px;
     padding-top: 15px;
@@ -181,6 +197,7 @@ button {
     color: #6DA77C;
     font-size: 10px;
 }
+/* fotos de perfil redondas (50% = círculo) */
 .avatar {
     width: 42px;
     height: 42px;
@@ -192,12 +209,14 @@ button {
 .feed {
     min-width: 0;
 }
+/* todas las "tarjetas": fondo blanco, borde y esquinas redondas */
 .panel, .publicación, .panel-publicación, .tablero-derecho {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 15px;
     box-shadow: 0 3px 14px #6e57a40b;
 }
+/* cuadro de crear publicación */
 #crear-publicacion {
     padding: 14px;
     margin-bottom: 18px;
@@ -221,6 +240,7 @@ button {
     color: var(--purple);
     font-size: 23px;
 }
+/* Foto, Video, Canción y Outfit en fila */
 .herramientas-publicación {
     display: flex;
     align-items: center;
@@ -246,6 +266,7 @@ button {
     color: var(--dark);
     font-size: 12px;
 }
+/* título "El tablero" con el botoncito de "FTs del día" a la derecha */
 .título-sección {
     display: flex;
     align-items: end;
@@ -283,6 +304,7 @@ button {
     align-items: center;
     gap: 10px;
 }
+/* foto de perfil pequeña de cada publicación */
 .foto-perfil {
     width: 43px;
     height: 43px;
@@ -311,18 +333,21 @@ button {
     color: var(--muted);
     font-size: 10px;
 }
+/* los tres puntitos sin fondo ni borde */
 .más-opciones {
     border: 0;
     background: transparent;
     color: var(--purple);
     font-size: 23px;
 }
+/* texto de la publicación */
 .decripción {
     margin: 13px 0;
     color: var(--text);
     font-size: 13px;
     line-height: 1.6;
 }
+/* cuadrícula de fotos: 5 columnas y filas de 200px */
 .fotos {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -330,9 +355,11 @@ button {
   grid-auto-rows: 200px;   
   gap: 2px;   
 }
+/* lo que se pase de la cuadrícula se corta */
 .fotos {
   overflow: hidden;  
 }
+/* cada foto llena toda su celda (object-fit:cover la recorta sin estirarla) */
 .fotos img {
   display: block;
   width: 100%;        
@@ -341,15 +368,18 @@ button {
   object-fit: cover;  
   border-radius: 0;   
 }
+/* la primera foto es la grande: ocupa 2 columnas y 2 filas */
 .fotos > img:first-child {
   grid-column: span 2;
   grid-row: span 2;
   object-position: center top;  
 }
+/* si la publicación tiene una sola foto, que use todo el ancho */
 .fotos:has(> :only-child) {
   grid-template-columns: 1fr;
   grid-auto-rows: 380px;
 }
+/* la foto o el video solito llena la celda completa */
 .fotos > img:only-child, .fotos > video:only-child {
   grid-column: auto;
   grid-row: auto;
@@ -357,6 +387,7 @@ button {
   height: 100%;
   object-fit: cover;
 }
+/* fila de abajo con like, comentarios, compartir y guardar */
 .interacción, .publicación-acciones {
     display: flex;
     align-items: center;
@@ -382,6 +413,7 @@ button {
     margin-left: auto;
     color: #6DA77C !important;
 }
+/* zona de comentarios */
 .comentarios {
     padding-top: 9px;
 }
@@ -393,6 +425,7 @@ button {
     font-size: 11px;
     line-height: 1.5;
 }
+/* foto pequeña al lado de cada comentario */
 .avatar-pequeño {
     width: 30px;
     height: 30px;
@@ -422,6 +455,7 @@ button {
     color: var(--purple);
     font-size: 18px;
 }
+/* columna de la derecha: los paneles uno debajo del otro */
 .parte-derecha {
     display: flex;
     flex-direction: column;
@@ -432,6 +466,7 @@ button {
     padding: 13px;
     min-width: 0;
 }
+/* título de cada panel y su botón "Ver todos" en la misma fila */
 .título-tablero {
     display: flex;
     align-items: center;
@@ -445,6 +480,7 @@ button {
     color: var(--dark);
     font-size: 14px;
 }
+/* son 3 clases pegadas (botón, de, texto), por eso los puntos y sin espacios */
 .botón.de.texto {
     padding: 5px;
     border: 0;
@@ -455,6 +491,7 @@ button {
 .botón.de.texto:hover {
     text-decoration: underline;
 }
+/* outfits en cuadrícula de 3 columnas */
 .outfits {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -464,6 +501,7 @@ button {
     min-width: 0;
     text-align: center;
 }
+/* object-fit:cover recorta la foto para que llene el espacio sin estirarse */
 .outfits img {
     display: block;
     width: 100%;
@@ -497,11 +535,13 @@ button {
     color: var(--muted);
     font-size: 11px;
 }
+/* canciones una debajo de otra */
 .canciones {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+/* cada canción: portada a la izquierda y reproductor al lado */
 .canción {
     display: flex;
     align-items: center;
@@ -527,6 +567,7 @@ button {
     color: var(--dark);
     font-size: 12px;
 }
+/* fotos de Little Moments en 3 columnas */
 .momentos {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -539,6 +580,7 @@ button {
     object-fit: cover;
     border-radius: 8px;
 }
+/* botón + con borde de rayitas */
 #agregar-momento {
     min-height: 85px;
     border: 1px dashed #C7B8E9;
@@ -547,6 +589,7 @@ button {
     color: var(--purple);
     font-size: 24px;
 }
+/* todas las páginas empiezan escondidas */
 .página {
     display: none;
     min-width: 0;
@@ -554,13 +597,15 @@ button {
 .página.activa {
     display: block;
 }
-#Mi.armario > img {
+/* fotos de la página Mi armario */
+[id="Mi armario"] > img {
     width: 30%;
     height: 210px;
     margin: 5px;
     object-fit: cover;
     border-radius: 10px;
 }
+/* parte de arriba del perfil: foto a la izquierda e información a la derecha */
 .encabezado-perfil {
     display: flex;
     align-items: center;
@@ -596,6 +641,7 @@ button {
     font-size: 12px;
     line-height: 1.5;
 }
+/* publicaciones, seguidores y seguidos en fila */
 .estadísticas-perfil {
     display: flex;
     flex-wrap: wrap;
@@ -641,12 +687,14 @@ button {
     color: var(--dark);
     font-size: 11px;
 }
+/* segundo span; cada etiqueta de estilo tiene su propio color */
 .estilos-favoritos span:nth-child(2) {
     background: var(--pink);
 }
 .estilos-favoritos span:nth-child(3) {
     background: var(--mint);
 }
+/* fotos del perfil en 3 columnas */
 .cuadricula-publicaciones, .cuadricula-outfits {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -658,6 +706,7 @@ button {
     object-fit: cover;
     border-radius: 10px;
 }
+/* pantallas medianas */
 @media (max-width: 1150px) {
     .opciones {
         grid-template-columns: 175px minmax(0, 1fr);
@@ -672,6 +721,7 @@ button {
         gap: 10px;
     }
 }
+/* celular */
 @media (max-width: 700px) {
     .titulo {
         padding: 12px;
@@ -724,10 +774,6 @@ button {
         display: flex;
         flex-direction: column;
     }
-    .fotos {
-        grid-template-rows: repeat(2, 90px);
-        gap: 4px;
-    }
     .outfits {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -750,16 +796,18 @@ button {
     .cuadricula-outfits img {
         height: 150px;
     }
-    #Mi.armario > img {
+    [id="Mi armario"] > img {
         width: 45%;
         height: 160px;
     }
 }
+/* fotos de la publicación de mari.ideas */
 article .momentos {
   grid-template-columns: 2fr 1fr;
   grid-auto-rows: 150px;
   gap: 2px;
 }
+/* cada foto llena su celda sin esquinas redondas */
 article .momentos img {
   display: block;
   width: 100%;
@@ -767,15 +815,19 @@ article .momentos img {
   object-fit: cover;
   border-radius: 0;
 }
+/* la primera foto ocupa 2 filas */
 article .momentos img:first-child {
   grid-row: span 2;
 }
-.feed:not(.ver-todos-outfits):not(.buscando) .extra-outfit {
+/* esconde los outfits del 4to en adelante, a menos que toquen "Ver todos" o estén buscando */
+.parte-derecha:not(.ver-todos-outfits):not(.buscando) .extra-outfit {
   display: none;
 }
-.feed:not(.ver-todos-canciones):not(.buscando) .extra-cancion {
+/* lo mismo pero con las canciones */
+.parte-derecha:not(.ver-todos-canciones):not(.buscando) .extra-cancion {
   display: none;
 }
+/* celular otra vez: fotos más pequeñas en las publicaciones */
 @media (max-width: 700px) {
   .fotos {
     grid-auto-rows: 120px;
@@ -788,5 +840,9 @@ article .momentos img:first-child {
     grid-auto-rows: 90px;
   }
 }
-
+/* las páginas (Tablero, Mi armario, Playlist, perfiles) ocupan el centro y la derecha */
+/* cuando abren una página, ocupa el centro y la columna derecha */
+.opciones > .página {
+  grid-column: 2 / -1;
+}
 

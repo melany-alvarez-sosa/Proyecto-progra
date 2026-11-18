@@ -3,33 +3,45 @@
 <head>
     <title>Little Things</title>
     <meta charset="UTF-8">
+    <!-- Se conecta el css con el html -->
     <link rel="stylesheet" href="Css/styles.css">
+    <!-- Se conecta el js. El defer hace que cargue cuando el html ya existe -->
     <script src="Js/script.js" defer></script>
  </head>
  <body>
-   <header class= titulo>
+   <!-- encabezado de arriba: logo, buscador y botones -->
+   <header class="titulo">
+       <!-- el logo. Si lo tocan vuelve al inicio (eso lo hace el js) -->
        <a class="marca" href="#" id="inicio">
           <strong>Little Things<span>♡</span></strong>
           <br>
            <b><small>Your closet, your moments</small></b>
        </a>
+       <!-- barra de búsqueda. Filtra publicaciones, outfits y canciones mientras escriben -->
        <label class="buscador"><span></span>
              <input type="search" placeholder="Buscar en Little Things...">
            </label>
           <br>
+         <!-- botones de arriba a la derecha (Inicio, Explorar, Crear, Notificaciones, Mi perfil) -->
          <div class="acciones-iniciales">
            <button> Inicio ⌂</button>
            <button> Explorar ◎</button>
+           <!-- botón para crear una publicación -->
            <button class="agregar" data-focus-publicación> Crear publicación +</button>
            <button>Notificaciones ♧</button>
+           <!-- botón que lleva a mi perfil -->
            <button class="botón-perfil">Mi perfil V</button>
          </div>
  </header>
     <br>
+     <!-- caja grande que tiene todo: menú de la izquierda, centro, columna derecha y las páginas. Se cierra al final, antes del body -->
      <div class="opciones">
     <!-- Menú lateral -->
+    <!-- columna de la izquierda (menú y amigos) -->
     <aside class="sidebar">
+      <!-- botones del menú. Cada uno tiene un data-section con el id de la sección a la que va -->
       <nav class="Menú principal">
+        <!-- "active" es el botón que está seleccionado -->
         <button class="nav-link active" data-section="Inicio">⌂ <span>Inicio</span></button>
         <button class="nav-link" data-section="Tablero">▧ <span>Tablero</span></button>
         <button class="nav-link" data-section="Mi armario">♧ <span>Mi armario</span></button>
@@ -37,6 +49,7 @@
         <button class="nav-link" data-section="Guardados">♡ <span>Guardados</span></button>
         <button class="nav-link" data-section="Mi perfil">▣ <span>Mi perfil</span></button>
      </nav>
+          <!-- lista de amigos. Si tocan uno se abre su perfil -->
           <section class="amigos">
             <h3>Tus amigos</h3>
             <p>
@@ -77,23 +90,29 @@
       </section>
     </aside>
 
+   <!-- el centro de la página, están las publicaciones (el "Inicio") -->
    <main class="feed">
+      <!-- cuadro para crear una publicación nueva -->
       <section class="panel publicación" id="crear-publicacion">
          <div class="línea-publicación">
+           <!-- Se escribe el texto de la publicación -->
            <input id="texto-publicación" type="text" placeholder="¿Qué quieres compartir hoy?"><span>☆</span></div>
+           <!-- Foto, Video, Canción y Outfit; y el botón de publicar -->
            <div class="herramientas-publicación">
              <span>▧ Foto</span>
              <span>◉ Video</span>
              <span>♫ Canción</span>
              <span>♧ Outfit</span>
+             <!-- este botón crea la publicación -->
              <button id="botón-publicar">Publicar</button>
             </div>
               <p id="mensaje" class="mensaje-formulario"></p>
       </section>
+      <!-- cuadro con mi foto de perfil -->
       <div class="publicación">
           <img src="img/perfil.jpg" width="300px" alt="Perfil" class="avatar">
      </div>
-
+      <!-- título "El tablero" -->
       <div class="título-sección">
          <div>
             <small>Your circle, your moments</small>
@@ -101,17 +120,21 @@
          </div>
          <span class="fotos-día">FTs del día ✦</span>
     </div>
-
+      <!-- una publicación completa -->
       <article class="publicación">
+        <!-- parte de arriba de la publicación: foto, nombre y hora -->
         <header class="encabezado-publicación">
            <img src="img/perfil L.jpg" width="300px" class="foto-perfil">
             <div><b>luna.fits <em>♡</em></b>
               <small>Hace 2 h</small>
            </div>
+           <!-- los tres puntitos (guardar, reportar, ocultar...) -->
            <button class="más-opciones">···</button>
        </header>
+        <!-- texto de la publicación -->
         <p class="decripción">Un día con mil planes ✨<br>¡cafetería, compras y buena compañía ☁️💗!</p>
         <!-- Collage de fotos del día -->
+     <!-- fotos de la publicación -->
      <div class="fotos">
          <img src="img/01_outfit_espejo.jpg" alt="Foto frente al espejo">
          <img src="img/02_matcha.jpg" alt="Bebida">
@@ -121,12 +144,16 @@
          <img src="img/06_flores.jpg" alt="flores">
          <img src="img/07_sephora.jpg" alt="tienda de maquillaje">
         </div>
+        <!-- botones de abajo: like, comentarios, compartir y guardar -->
         <div class="interacción">
+          <!-- botón de like. El número es el contador -->
           <button class="like">♡ <b>246</b></button>
           <button>☏ <b>18</b></button>
           <button>⇄</button>
+          <!-- guardar la publicación (sale en la sección Guardados) -->
           <button class="favoritos">♧</button>
         </div>
+         <!-- comentarios de la publicación y el cuadro para escribir uno nuevo -->
          <div class="comentarios">
           <p>
             <img src="img/perfil V.jpg" width="100px" class="avatar-pequeño">
@@ -142,12 +169,14 @@
               <br>amo tu outfit, ¿de dónde es el bolso? 💗
             </span>
           </p>
+          <!-- formulario para comentar -->
           <form>
             <input placeholder="Escribe un comentario..." >
             <button>➤</button>
           </form>
         </div>
       </article>
+       <!-- publicación de mari.ideas -->
        <article class="panel-publicación">
         <header class="encabezado-publicacion">
           <img src="img/perfil M.jpg" width="300px" class="avatar">
@@ -158,6 +187,7 @@
           <button class="más-opciones">···</button>
         </header>
         <p class="decripción">Los días siempre son perfectos si hay café y un buen libro ☆</p>
+        <!-- 3 fotos de la publicación -->
         <div class="momentos">
           <img src="img/lectura.jpg" width="300px" height="300px" alt="Café y libro">
           <img src="img/lirios.jpg" width="300px" height="300px" alt="Flores">
@@ -170,12 +200,16 @@
         </div>
             </article>
     </main>
+    <!-- columna de la derecha: outfits, playlist y momentos. Solo se ve en el Inicio -->
     <aside class="parte-derecha">
+      <!-- panel de outfits de la comunidad -->
       <section class="tablero-derecho">
         <div class="título-tablero">
           <h2>♧ Outfits de la comunidad</h2>
+          <!-- al tocarlo se muestran todos los outfits (si no, solo 3) -->
           <button class="botón de texto" data-section="Mi armario">Ver todos →</button>
         </div>
+        <!-- aquí están todos los outfits -->
         <div class="outfits">
           <article>
             <img src="img/outfit café.jpg" width="300px" alt="Outfit para un café">
@@ -233,16 +267,19 @@
           </article>
         </div>
       </section>
+      <!-- panel de la playlist -->
       <section class="tablero-derecho">
         <div class="título-tablero">
           <h2>♫ Playlist vibes <em>♡</em></h2>
          <p class="descripción">Canciones que combinan con tu foto ♫</p>
-          <section id="Playlist vibes" class="página">
+          <!-- al tocarlo se muestran todas las canciones (si no, solo 3) -->
           <button class="botón de texto" data-section="Playlist vibes">Ver todos →</button>
        </div>
+        <!-- lista de canciones. Cada canción tiene su portada y su reproductor -->
         <div class="canciones">
         <div class="canción">
           <img src="img/happy-chill.jpg">
+            <!-- reproductor de la canción. El "loop" la repite -->
             <audio controls loop>
               <source src="audios/delosound-happy-chill-462277.mp3" type="audio/mpeg">
             </audio>
@@ -291,6 +328,7 @@
             </audio>
        </div>
      </section>
+       <!-- panel de Little Moments -->
        <section class="tablero-derecho">
         <div class="título-tablero">
           <h2>♧ Little Moments ♡</h2>
@@ -302,11 +340,12 @@
           <img src="img/café_libro.jpg" width="500px" alt="bebida y un libro">
           <img src="img/lirios.jpg" width="300px" alt="Flores">
           <img src="img/foto boda.jpg" width="300px" alt="Outfit">
+          <!-- botón + para subir una foto a Little Moments -->
           <button id="agregar-momento">+</button>
         </div>
             </section>
     </aside>
-</div>
+<!-- página Tablero -->
 <section id="Tablero" class="página">
         <h3>¡Tableros Recientes!</h3>
          <article class="publicación">
@@ -377,6 +416,7 @@
         </div>
       </article>
       </section>
+      <!-- página Mi armario con las prendas que "he compartido" -->
       <section id="Mi armario" class="página">
         <h3>Prendas que has compartido!</h3>
         <img src="img/camisa cuadros.jpg" width="300px" height="300px" alt="Camisa de cuadros">
@@ -386,6 +426,7 @@
         <img src="img/camisa celeste.jpg" width="300px" height="300px" alt="Camisa celeste">
         <img src="img/poncho.jpg" width="300px" height="300px" alt="poncho">
       </section>
+      <!-- página Playlist vibes con todas las canciones -->
       <section id="Playlist vibes" class="página">
         <h3>¡Canciones que te han recomendado!</h3>
         <div class="título-tablero">
@@ -443,6 +484,7 @@
             </audio>
        </div>
      </section>
+     <!-- página de mi perfil -->
      <section id="Mi perfil" class="página">
     <div class="encabezado-perfil">
         <div class="foto-perfil">
@@ -461,6 +503,7 @@
             <button class="botón-editar">Editar perfil</button>
         </div>
     </div>
+    <!-- mis estilos favoritos -->
     <section class="mi-estilo">
         <h3>Mi estilo ♡</h3>
         <p> un día a la vez ₊˚⊹</p>
@@ -472,6 +515,7 @@
     </section>
     <section class="mis-publicaciones">
         <h3>Publicaciones Destacadas<em>₊˚⊹</em></h3>
+        <!-- mis publicaciones destacadas en cuadrícula -->
         <div class="cuadricula-publicaciones">
             <img src="img/outfit 1.jpg" width="300px" height="500px" alt="Mi outfit del día">
             <img src="img/edificios_atardecer.jpg" width="300px" height="500px" alt="Un momento especial">
@@ -480,6 +524,7 @@
     </section>
     <section class="mis-outfits">
         <h3>Outfits ₊˚⊹</h3>
+        <!-- mis outfits en cuadrícula -->
         <div class="cuadricula-outfits">
             <img src="img/outfit 3.jpg" width="300px" height="500px" alt="Primer outfit">
             <img src="img/outfit 2.jpg" width="300px" height="500px" alt="Segundo outfit">
@@ -487,6 +532,7 @@
         </div>
     </section>
      </section>
+     <!-- perfil de Sofi -->
      <section id="perfil-amigo" class="página">
     <div class="encabezado-perfil">
         <img id="foto-amigo" src="img/perfil S.jpg" width="300px" alt="Foto de perfil del amigo">
@@ -511,6 +557,7 @@
         </div>
     </section>
 </section>
+ <!-- perfil de Vane -->
  <section id="perfil-amigo" class="página">
     <div class="encabezado-perfil">
         <img id="foto-amigo" src="img/perfil V.jpg" width="300px" alt="Foto de perfil del amigo">
@@ -535,6 +582,7 @@
         </div>
     </section>
 </section>
+ <!-- perfil de Lu (luna.fits) -->
  <section id="perfil-amigo" class="página">
     <div class="encabezado-perfil">
         <img id="foto-amigo" src="img/perfil L.jpg" width="300px" alt="Foto de perfil del amigo">
@@ -559,6 +607,7 @@
         </div>
     </section>
 </section>
+<!-- perfil de Marilu (mari.ideas) -->
 <section id="perfil-amigo" class="página">
     <div class="encabezado-perfil">
         <img id="foto-amigo" src="img/perfil M.jpg" width="300px" alt="Foto de perfil del amigo">
@@ -583,6 +632,7 @@
         </div>
     </section>
 </section>
+<!-- perfil de Cam -->
 <section id="perfil-amigo" class="página">
     <div class="encabezado-perfil">
         <img id="foto-amigo" src="img/perfil C.jpg" width="300px" alt="Foto de perfil del amigo">
@@ -607,5 +657,7 @@
         </div>
     </section>
 </section>
+<!-- aquí se cierra la caja .opciones -->
+</div>
 </body>
 </html>
