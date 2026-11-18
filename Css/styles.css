@@ -79,3 +79,78 @@ button {
     color: var(--text);
     font-size: 12px;
 }
+.acciones-iniciales {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+.acciones-iniciales button {
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    color: var(--dark);
+    font-size: 12px;
+}
+.acciones-iniciales button:hover {
+    background: var(--lavender);
+}
+.acciones-iniciales .agregar {
+    background: var(--purple);
+    color: white;
+}
+.acciones-iniciales .agregar:hover {
+    background: var(--dark);
+}
+.acciones-iniciales .botón-perfil {
+    background: var(--mint);
+    color: var(--dark);
+}
+.acciones-iniciales {
+    display: grid;
+    grid-template-columns: 205px minmax(0, 1fr) 340px;
+    gap: 17px;
+    max-width: 1600px;
+    margin: auto;
+    padding: 18px;
+    align-items: start;
+}
+.acciones-iniciales {
+    position: sticky;
+    top: 18px;
+    min-width: 0;
+}
+.Menú.principal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font-size: 14px;
+}
+.nav-link span {
+    font-size: 13px;
+}
+.nav-link small {
+    margin-left: 5px;
+    padding: 3px 6px;
+    border-radius: 10px;
+    background: var(--pink);
+    color: var(--dark);
+    font-size: 9px;
+}
+.nav-link:hover, .nav-link.active {
+    background: var(--lavender);
+    color: var(--dark);
+}
