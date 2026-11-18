@@ -23,3 +23,66 @@ function mostrarMensaje(texto) {
   mensaje.textContent = texto;
   setTimeout(function () { mensaje.textContent = ''; }, 3000);
 }
+// Las páginas son las <section class="página"> que están FUERA del <main>
+// (así no me confundo con una section que está dentro del main)
+function getPaginas() {
+  const todas = Array.from(document.querySelectorAll('section.página'));
+  return todas.filter(function (p) { return !p.closest('main'); });
+}
+// Busca una página por su id (Tablero, Mi armario, etc.)
+function buscarPagina(nombre) {
+  return getPaginas().find(function (p) { return p.id === nombre; });
+}
+// Oculta o muestra un elemento según sus data-limite, data-busqueda, data-ocultado
+// Si alguna dice 'si' se oculta
+function refrescar(el) {
+  const oculto = el.dataset.limite === 'si' || el.dataset.busqueda === 'si' || el.dataset.ocultado === 'si';
+  el.style.display = oculto ? 'none' : '';
+}
+function mostrarSeccion(nombre) {
+  cerrarMenu();
+  let pagina = null;
+  if (nombre === 'Guardados') {
+    pagina = prepararGuardados();   // esta sección no existe en el html, se crea con js
+  } else if (nombre !== 'Inicio') {
+    pagina = buscarPagina(nombre);
+    if (!pagina) {                  // si no existe esa sección no pasa nada
+      mostrarAviso('Esta sección todavía no está lista ♡');
+      return;
+    }
+  }
+  // primero se esconden todas las páginas
+  getPaginas().forEach(function (p) { p.style.display = 'none'; });
+  if (nombre === 'Inicio') {
+    feed.style.display = '';        // se muestra el inicio
+  } else {
+    feed.style.display = 'none';    // se esconde el inicio
+    pagina.style.display = 'block'; // y se muestra la página que tocaron
+  }
+  // le pongo la clase "active" solo al botón del menú que tocaron
+  botonesNav.forEach(function (b) {
+    b.classList.toggle('active', b.dataset.section === nombre);
+  });
+  window.scrollTo(0, 0); // subir hasta arriba
+}
+// Perfil de un amigo. Se reconocen por la foto de perfil 
+function mostrarPerfilAmigo(src) {
+  if (src === 'img/perfil.jpg') {  
+    mostrarSeccion('Mi perfil');
+    return;
+  }
+  const pagina = getPaginas().find(function (p) {
+    const img = p.querySelector('.encabezado-perfil img');
+    return img && img.getAttribute('src') === src;
+  });
+  if (!pagina) {
+    mostrarAviso('No encontré ese perfil :(');
+    return;
+  }
+  cerrarMenu();
+  getPaginas().forEach(function (p) { p.style.display = 'none'; });
+  feed.style.display = 'none';
+  pagina.style.display = 'block';
+  botonesNav.forEach(function (b) { b.classList.remove('active'); });
+  window.scrollTo(0, 0);
+}
