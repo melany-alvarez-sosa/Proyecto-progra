@@ -10,7 +10,6 @@
     --muted: #9991A5;
     --border: #E7E0F0;
 }
-
 * {
     box-sizing: border-box;
 }
@@ -107,7 +106,7 @@ button {
     background: var(--mint);
     color: var(--dark);
 }
-.acciones-iniciales {
+.opciones {
     display: grid;
     grid-template-columns: 205px minmax(0, 1fr) 340px;
     gap: 17px;
@@ -116,7 +115,7 @@ button {
     padding: 18px;
     align-items: start;
 }
-.acciones-iniciales {
+.sidebar {
     position: sticky;
     top: 18px;
     min-width: 0;
@@ -193,10 +192,7 @@ button {
 .feed {
     min-width: 0;
 }
-.panel,
-.publicación,
-.panel-publicación,
-.tablero-derecho {
+.panel, .publicación, .panel-publicación, .tablero-derecho {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 15px;
@@ -278,5 +274,291 @@ button {
     color: var(--dark);
     font-size: 11px;
 }
+.publicación, .panel-publicación {
+    padding: 14px;
+    margin-bottom: 16px;
+}
+.encabezado-publicación, .encabezado-publicacion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.foto-perfil {
+    width: 43px;
+    height: 43px;
+    min-width: 43px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--lavender);
+}
+.encabezado-publicación div, .encabezado-publicacion div {
+    flex: 1;
+    min-width: 0;
+}
+.encabezado-publicación b, .encabezado-publicación small, .encabezado-publicacion b, .encabezado-publicacion small {
+    display: block;
+}
+.encabezado-publicación b, .encabezado-publicacion b {
+    color: var(--dark);
+    font-size: 13px;
+}
+.encabezado-publicación em, .encabezado-publicacion em {
+    color: #D98DB8;
+    font-style: normal;
+}
+.encabezado-publicación small, .encabezado-publicacion small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10px;
+}
+.más-opciones {
+    border: 0;
+    background: transparent;
+    color: var(--purple);
+    font-size: 23px;
+}
+.decripción {
+    margin: 13px 0;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+}
+#publicacion-luna .fotos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 145px);
+    gap: 8px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#publicacion-luna .fotos img:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+#publicacion-luna .fotos img:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+#publicacion-luna .fotos img:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+}
+#publicacion-luna .fotos img:nth-child(4) {
+    grid-column: 4;
+    grid-row: 1;
+}
+#publicacion-luna .fotos img:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2;
+}
+#publicacion-luna .fotos img:nth-child(6) {
+    grid-column: 3;
+    grid-row: 2;
+}
+#publicacion-luna .fotos img:nth-child(7) {
+    grid-column: 4;
+    grid-row: 2;
+}
+#publicacion-luna .fotos img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    border-radius: 7px;
+}
+.interacción, .publicación-acciones {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+}
+.interacción button, .publicación-acciones button {
+    padding: 3px;
+    border: 0;
+    background: transparent;
+    color: var(--purple);
+    font-size: 17px;
+}
+.interacción b, .publicación-acciones b {
+    font-size: 11px;
+    font-weight: normal;
+}
+.like {
+    color: #DF7EAC !important;
+}
+.favoritos {
+    margin-left: auto;
+    color: #6DA77C !important;
+}
+.comentarios {
+    padding-top: 9px;
+}
+.comentarios p {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 9px 0;
+    font-size: 11px;
+    line-height: 1.5;
+}
+.avatar-pequeño {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.comentarios b {
+    color: var(--dark);
+}
+.comentarios form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.comentarios input {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    outline: none;
+}
+.comentarios form button {
+    border: 0;
+    background: transparent;
+    color: var(--purple);
+    font-size: 18px;
+}
+.parte-derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+}
+.tablero-derecho {
+    padding: 13px;
+    min-width: 0;
+}
+.título-tablero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.título-tablero h2 {
+    margin: 0;
+    color: var(--dark);
+    font-size: 14px;
+}
+.botón.de.texto {
+    padding: 5px;
+    border: 0;
+    background: transparent;
+    color: var(--purple);
+    font-size: 10px;
+}
+.botón.de.texto:hover {
+    text-decoration: underline;
+}
+.outfits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+.outfits article {
+    min-width: 0;
+    text-align: center;
+}
+.outfits img {
+    display: block;
+    width: 100%;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+.outfits b,
+.outfits small,
+.outfits label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.outfits b {
+    margin-top: 7px;
+    color: var(--dark);
+    font-size: 10px;
+}
+.outfits small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 9px;
+}
+.outfits label {
+    margin-top: 5px;
+    color: var(--purple);
+    font-size: 9px;
+}
+.descripción {
+    margin: 5px 0 10px;
+    color: var(--muted);
+    font-size: 11px;
+}
+.canciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.canción {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--pale);
+}
+.canción img {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.canción audio {
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+}
+.tablero-derecho h3 {
+    color: var(--dark);
+    font-size: 12px;
+}
+.momentos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+}
+.momentos img {
+    display: block;
+    width: 100%;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+#agregar-momento {
+    min-height: 85px;
+    border: 1px dashed #C7B8E9;
+    border-radius: 8px;
+    background: var(--lavender);
+    color: var(--purple);
+    font-size: 24px;
+}
+
+
 
 
